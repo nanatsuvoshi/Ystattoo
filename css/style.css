@@ -1,0 +1,410 @@
+@charset "utf-8";
+
+/* ==========================================================
+                      header
+========================================================== */
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.header-container {
+  margin: 0 auto;
+  padding: 20px 25px;
+  max-width: 1180px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  display: inline-block;
+}
+
+.header-logo img {
+  width: 70px;
+}
+
+.globalMenuPc {
+  width: 60vw;
+  max-width: 710px;
+  display: none;
+}
+
+.globalMenuPc ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.globalMenuPc a {
+  font-size: 16px;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  position: relative;
+}
+
+.globalMenuPc a::after {
+  text-decoration: none;
+  position: absolute;
+  transition: 0.4s;
+  content: "";
+  width: 0;
+  left: 50%;
+  bottom: 0;
+  height: 1px;
+  background: #fff;
+}
+
+.globalMenuPc a:hover {
+  text-decoration: none;
+}
+
+.globalMenuPc a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ハンバーガーボタン */
+.hamburger {
+  display: block;
+  position: relative;
+  z-index: 3;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  left: 10px;
+  background: #fff;
+  transition: 0.5s all;
+}
+
+.hamburger span:nth-child(1) {
+  top: 25%;
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 25%;
+}
+
+/* ナビ開いてる時のボタン */
+
+.hamburger.active span:nth-child(1) {
+  top: 24px;
+  left: 12px;
+  width: 25px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  left: 60%;
+  opacity: 0;
+  animation: active-hamburger-bar02 0.8s forwards;
+}
+
+@keyframes active-hamburger-bar02 {
+  100% {
+    height: 0;
+  }
+}
+
+.hamburger.active span:nth-child(3) {
+  top: 24px;
+  left: 12px;
+  width: 25px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.hamburger::after {
+  display: block;
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  transition: all 0.75s;
+}
+
+.hamburger.active::after {
+  border: 2px solid #fff;
+}
+
+nav.globalMenuSp {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+nav.globalMenuSp ul li {
+  transition: 0.4s all;
+}
+
+nav.globalMenuSp ul li:hover {
+  background: #ccc;
+}
+
+nav.globalMenuSp ul li a {
+  display: block;
+  font-size: 14px;
+  color: #fff;
+  padding: 1.5em 0;
+  text-decoration: none;
+}
+
+/* このクラスを、jQueryで付与・削除する */
+nav.globalMenuSp.active {
+  opacity: 100;
+  pointer-events: auto;
+}
+
+/* ==========================================================
+                      top
+========================================================== */
+.top {
+  height: 100vh;
+  background-image: url("../img/top.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.top-title {
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* スライダー */
+.wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 130px;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 50px;
+}
+
+.slideshow {
+  display: flex;
+  list-style: none;
+  animation: loop-slide 20s infinite linear 1s both;
+}
+
+.content img {
+  height: 100px;
+  width: 130px;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+@keyframes loop-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-230%);
+  }
+}
+/* ==========================================================
+                      about
+========================================================== */
+.about-container {
+  padding: 30px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+.about-title {
+  font-size: 30px;
+  color: #0a0a0a;
+  text-align: center;
+}
+
+.about-subtitle {
+  font-size: 14px;
+  color: #0a0a0a;
+  text-align: center;
+}
+
+.about img {
+  display: block;
+  width: 60%;
+  border-radius: 50%;
+  margin: 15px auto;
+}
+
+.about p {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+/* ==========================================================
+                  linkbar
+========================================================== */
+.linkbar-container {
+  padding: 25px 50px;
+}
+.linkbar a {
+  color: #0a0a0a;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgb(200, 200, 200);
+  margin-bottom: 25px;
+
+  transition: all 0.3s;
+}
+
+.linkbar a:hover {
+  transform: translateY(-10px);
+  opacity: 0.7;
+  box-shadow: 2px 5px 5px rgb(129, 129, 129);
+}
+
+.linkbar img {
+  width: 70px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.title-area {
+  width: 100%;
+  text-align: center;
+}
+
+.linkbar-title {
+  font-size: 25px;
+}
+
+.linkbar-subtitle {
+  font-size: 13px;
+}
+
+/* ==========================================================
+                  footer
+========================================================== */
+footer {
+  background-color: #191919;
+  text-align: center;
+}
+
+.footer-container {
+  padding: 15px;
+}
+
+.icon-area a {
+  color: #fff;
+  font-size: 30px;
+  display: inline-block;
+  margin: 0 15px;
+
+  transition: all 0.3s;
+}
+
+.icon-area a:hover {
+  opacity: 0.6;
+}
+
+.copyright {
+  color: #fff;
+  font-size: 8px;
+  margin-top: 10px;
+}
+/* ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+                    レスポンシブ
+☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆ */
+
+/* 768px〜 */
+@media (min-width: 768px) {
+  /* ======================== header =========================== */
+  .header-container {
+    padding: 20px 50px;
+  }
+
+  .header-logo img {
+    width: 100px;
+  }
+
+  nav.globalMenuSp ul li a {
+    padding: 1.5em 0;
+  }
+  /* ======================== about =========================== */
+  .about-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .about img {
+    width: 40%;
+    object-fit: cover;
+    margin: 0;
+  }
+
+  .about p {
+    width: 55%;
+    font-size: 14px;
+  }
+  /* ======================== linkbar =========================== */
+  .linkbar-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .linkbar a {
+    width: 300px;
+  }
+}
+
+/* 1024px〜 */
+/* ======================== header =========================== */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 20px 30px;
+  }
+
+  .globalMenuPc {
+    display: block;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .linkbar a {
+    width: 12vw;
+  }
+}
